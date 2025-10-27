@@ -1,33 +1,35 @@
-# Inventario Sirocco (Plantilla limpia)
+#  Inventario para pubs/restaurantes/cafeterias
+
+Aplicación de escritorio moderna para la **gestión de inventario, productos y ventas** en bares, restaurantes y pubs.  
+Basada en **Electron**, **Node.js** y **SQLite**, combina una arquitectura segura con una interfaz limpia y modular.
+
+---
+
+## Características principales
+
+- Control de inventario en tiempo real  
+- Registro de ventas y control de caja  
+- Reportes detallados  
+- Arquitectura escalable y segura (IPC + contextBridge)  
+- Persistencia de datos con **better-sqlite3**  
+- Código limpio y estructurado para mantenimiento y despliegue
+
+---
+
+## Tecnologías utilizadas
+
+| Tipo | Tecnologías |
+|------|--------------|
+| Plataforma | Electron |
+| Backend | Node.js |
+| Base de datos | SQLite (better-sqlite3) |
+| UI | HTML, CSS, JavaScript |
+| Gestor de paquetes | npm |
+
+---
 
 ## Cómo ejecutar
 
 ```bash
 npm install
 npm run dev
-```
-
-- La base de datos se guarda en la carpeta `userData` de Electron (segura para dev y producción).
-- Escribe usando IPC seguro (preload + contextBridge).
-- `better-sqlite3` síncrono para simplificar escrituras y errores visibles.
-
-## Estructura
-
-```
-src/
-  main.js        # Proceso main (ventana + IPC)
-  preload.js     # API segura para el renderer
-  db/db.js       # Capa de acceso a datos
-  renderer/
-    index.html   # UI
-    renderer.js  # Lógica del renderer
-assets/
-package.json
-```
-
-## Puntos clave de "Guardar" que no fallan
-
-- Manejador del botón definido tras `DOMContentLoaded`.
-- `await`/síncrono correcto entre renderer -> IPC -> DB.
-- Validación de nombre/cantidad con errores visibles en UI.
-- Rutas absolutas para la DB (no archivos perdidos en dev/prod).
