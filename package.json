@@ -1,0 +1,51 @@
+{
+  "name": "inventario-sirocco",
+  "version": "1.0.0",
+  "description": "Inventario Sirocco - Electron + SQLite",
+  "main": "src/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "electron .",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -w",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.0",
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "electron": "^30.5.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.sirocco.inventario",
+    "productName": "Inventario Pub Sirocco",
+    "files": [
+      "index.html",
+      "styles.css",
+      "renderer.js",
+      "logo.png",
+      "src/**",
+      "build/**"
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis"
+    
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

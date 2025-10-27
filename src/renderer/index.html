@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario Pub Sirocco</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ================= HEADER ================= -->
+    <header class="app-header">
+      <img class="app-logo" src="./logo.png" alt="Logo Pub Sirocco">
+      <div class="app-titles">
+        <h1>Inventario Pub Sirocco</h1>
+        <p id="welcome" class="welcome">Bienvenido Salvador y Ana</p>
+      </div>
+    </header>
+
+    <!-- ================= FORMULARIO ================= -->
+    <div class="card">
+      <h2>Nuevo artículo</h2>
+
+      <form id="form-articulo" autocomplete="off">
+        <label for="nombre">Nombre del producto</label>
+        <input id="nombre" type="text" placeholder="Ej. Cerveza Alhambra 1925" required>
+
+        <label for="categoria">Categoría</label>
+        <select id="categoria">
+          <option value="Cervezas">Cervezas</option>
+          <option value="Vinos">Vinos</option>
+          <option value="Licores">Licores</option>
+          <option value="Refrescos">Refrescos</option>
+          <option value="Cafetería">Cafetería</option>
+          <option value="Otros" selected>Otros</option>
+        </select>
+
+        <label for="cantidad">Cantidad en stock</label>
+        <input id="cantidad" type="number" min="0" value="0" inputmode="numeric">
+
+        <label for="precio">Precio (€)</label>
+        <input id="precio" type="number" min="0" step="0.01" value="0" inputmode="decimal">
+
+        <label for="observaciones">Observaciones</label>
+        <input id="observaciones" type="text" placeholder="Notas…">
+
+        <div class="row botones-form">
+          <button id="btn-guardar" type="submit" class="btn primary">Guardar</button>
+          <button id="btn-cancelar-edicion" type="button" class="btn secondary hidden">Cancelar edición</button>
+          <span id="badge-guardado" class="status" aria-live="polite"></span>
+        </div>
+
+        <div id="error" class="error" role="alert" style="display:none;"></div>
+      </form>
+    </div>
+
+    <!-- ================= TABLA ================= -->
+    <div class="card">
+      <div class="buscador">
+        <input id="filtro-busqueda" class="search" placeholder="Buscar producto…">
+      </div>
+
+      <table class="grid">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Precio (€)</th>
+            <th>Observaciones</th>
+            <th class="col-actions">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-items">
+          <!-- Filas generadas dinámicamente por renderer.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ================= MODAL ================= -->
+    <div id="modal-overlay" class="overlay" style="display:none;"></div>
+    <div id="confirm-modal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <p id="modal-title">¿Eliminar este artículo?</p>
+        <div class="modal-actions">
+          <button id="modal-aceptar" class="btn primary">Aceptar</button>
+          <button id="modal-cancelar" class="btn secondary">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="./renderer.js" defer></script>
+
+  <script>
+    // Saludo dinámico (Buenos días/tardes/noches)
+    window.addEventListener("DOMContentLoaded", () => {
+      const hora = new Date().getHours();
+      let saludo = "Bienvenido";
+      if (hora >= 6 && hora < 12) saludo = "Buenos días";
+      else if (hora >= 12 && hora < 20) saludo = "Buenas tardes";
+      else saludo = "Buenas noches";
+      const el = document.getElementById("welcome");
+      if (el) el.textContent = `${saludo} Salvador y Ana`;
+    });
+  </script>
+
+  <noscript>Activa JavaScript para usar el Inventario.</noscript>
+</body>
+</html>

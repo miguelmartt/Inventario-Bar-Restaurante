@@ -1,0 +1,69 @@
+:root{
+  --bg:#0f1720;
+  --panel:#222630;
+  --panel-2:#2a2f3a;
+  --muted:#9aa3af;
+  --cyan:#00d1e6;
+  --ok:#22c55e;
+  --warn:#ef4444;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
+  background: radial-gradient(1000px 400px at 50% -100px, #d7f9ff33, transparent 60%), var(--bg);
+  color:#e5e7eb;
+}
+.wrap{padding:28px; max-width:1200px; margin:0 auto}
+.card{
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 10px 30px #00000040;
+  margin-bottom:18px;
+  border:1px solid #00000055;
+}
+h1{margin:0; font-size:22px; letter-spacing:.3px}
+h2{margin:0 0 12px 0; font-size:18px}
+label{display:block; margin:12px 0 8px; font-weight:600}
+input,select{
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid #3b4250;
+  background:#333a47; color:#e5e7eb; outline:none;
+}
+input::placeholder{color:#9aa3af}
+.row{display:flex; align-items:center; gap:12px; margin-top:16px}
+.btn{
+  border:0; padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:700;
+}
+.btn.primary{background:var(--cyan); color:#00323a}
+.btn.edit{background:#22c55e22; border:1px solid #22c55e66}
+.btn.del{background:#ef444422; border:1px solid #ef444466}
+.status{color:var(--ok); font-weight:600}
+.error{color:#ffb4b4; margin-top:6px}
+.search{
+  width:100%; margin-bottom:12px
+}
+table.grid{width:100%; border-collapse:collapse; overflow:hidden; border-radius:10px}
+.grid thead th{
+  background:var(--cyan); color:#002a30; padding:12px; font-size:14px; text-align:left
+}
+.grid tbody td{padding:12px; border-top:1px solid #ffffff10}
+.col-actions{width:160px}
+.actions{display:flex; gap:8px}
+
+/* ⬇️ NUEVO: estilos del header */
+.app-header{
+  display:flex; align-items:center; gap:16px;
+  margin:0 0 18px 0; padding:6px 10px;
+  border-radius:12px;
+}
+.app-logo{
+  width:56px; height:56px; border-radius:50%;
+  object-fit:cover; background:#00000020;
+  box-shadow:0 4px 10px #00000040;
+}
+.app-titles .welcome{
+  margin:2px 0 0; color:var(--muted);
+}
+/* ⬆️ FIN NUEVO */
